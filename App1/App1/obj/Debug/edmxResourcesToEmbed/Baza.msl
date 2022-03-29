@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BazaZaVajeModelStoreContainer" CdmEntityContainer="BazaZaVajeEntities">
+    <EntitySetMapping Name="DOBAVITELJ">
+      <EntityTypeMapping TypeName="BazaZaVajeModel.DOBAVITELJ">
+        <MappingFragment StoreEntitySet="DOBAVITELJ">
+          <ScalarProperty Name="D_KODA" ColumnName="D_KODA" />
+          <ScalarProperty Name="D_IME" ColumnName="D_IME" />
+          <ScalarProperty Name="D_KONTAKT" ColumnName="D_KONTAKT" />
+          <ScalarProperty Name="D_PODROČJE" ColumnName="D_PODROČJE" />
+          <ScalarProperty Name="D_TELEFON" ColumnName="D_TELEFON" />
+          <ScalarProperty Name="D_DRŽAVA" ColumnName="D_DRŽAVA" />
+          <ScalarProperty Name="D_NAROČILO" ColumnName="D_NAROČILO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KUPEC">
+      <EntityTypeMapping TypeName="BazaZaVajeModel.KUPEC">
+        <MappingFragment StoreEntitySet="KUPEC">
+          <ScalarProperty Name="KUP_KODA" ColumnName="KUP_KODA" />
+          <ScalarProperty Name="KUP_PRIIMEK" ColumnName="KUP_PRIIMEK" />
+          <ScalarProperty Name="KUP_IME" ColumnName="KUP_IME" />
+          <ScalarProperty Name="KUP_ZAČ" ColumnName="KUP_ZAČ" />
+          <ScalarProperty Name="KUP_PODROČJE" ColumnName="KUP_PODROČJE" />
+          <ScalarProperty Name="KUP_TELEFON" ColumnName="KUP_TELEFON" />
+          <ScalarProperty Name="KUP_STANJE" ColumnName="KUP_STANJE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUKT">
+      <EntityTypeMapping TypeName="BazaZaVajeModel.PRODUKT">
+        <MappingFragment StoreEntitySet="PRODUKT">
+          <ScalarProperty Name="P_KODA" ColumnName="P_KODA" />
+          <ScalarProperty Name="P_OPIS" ColumnName="P_OPIS" />
+          <ScalarProperty Name="P_DATUM" ColumnName="P_DATUM" />
+          <ScalarProperty Name="P_ZALOGA" ColumnName="P_ZALOGA" />
+          <ScalarProperty Name="P_MIN" ColumnName="P_MIN" />
+          <ScalarProperty Name="P_CENA" ColumnName="P_CENA" />
+          <ScalarProperty Name="P_POPUST" ColumnName="P_POPUST" />
+          <ScalarProperty Name="D_KODA" ColumnName="D_KODA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RAČUN">
+      <EntityTypeMapping TypeName="BazaZaVajeModel.RAČUN">
+        <MappingFragment StoreEntitySet="RAČUN">
+          <ScalarProperty Name="RAČ_ID" ColumnName="RAČ_ID" />
+          <ScalarProperty Name="KUP_KODA" ColumnName="KUP_KODA" />
+          <ScalarProperty Name="RAČ_DATUM" ColumnName="RAČ_DATUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VRSTICA">
+      <EntityTypeMapping TypeName="BazaZaVajeModel.VRSTICA">
+        <MappingFragment StoreEntitySet="VRSTICA">
+          <ScalarProperty Name="RAČ_ID" ColumnName="RAČ_ID" />
+          <ScalarProperty Name="VRS_ŠT" ColumnName="VRS_ŠT" />
+          <ScalarProperty Name="P_KODA" ColumnName="P_KODA" />
+          <ScalarProperty Name="VRS_KOS" ColumnName="VRS_KOS" />
+          <ScalarProperty Name="VRS_CENA" ColumnName="VRS_CENA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

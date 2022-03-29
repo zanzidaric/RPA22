@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BazaZaVajeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DOBAVITELJ">
+    <Key>
+      <PropertyRef Name="D_KODA" />
+    </Key>
+    <Property Name="D_KODA" Type="Int32" Nullable="false" />
+    <Property Name="D_IME" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="D_KONTAKT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="D_PODROČJE" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="D_TELEFON" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="D_DRŽAVA" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="D_NAROČILO" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PRODUKT" Relationship="Self.FK_PRODUKT_ToTable" FromRole="DOBAVITELJ" ToRole="PRODUKT" />
+  </EntityType>
+  <EntityType Name="KUPEC">
+    <Key>
+      <PropertyRef Name="KUP_KODA" />
+    </Key>
+    <Property Name="KUP_KODA" Type="Int32" Nullable="false" />
+    <Property Name="KUP_PRIIMEK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="KUP_IME" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="KUP_ZAČ" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="KUP_PODROČJE" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="KUP_TELEFON" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="KUP_STANJE" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="RAČUN" Relationship="Self.FK_RAČUN_ToTable" FromRole="KUPEC" ToRole="RAČUN" />
+  </EntityType>
+  <EntityType Name="PRODUKT">
+    <Key>
+      <PropertyRef Name="P_KODA" />
+    </Key>
+    <Property Name="P_KODA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="P_OPIS" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="P_DATUM" Type="DateTime" Precision="3" />
+    <Property Name="P_ZALOGA" Type="Int16" />
+    <Property Name="P_MIN" Type="Int16" />
+    <Property Name="P_CENA" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="P_POPUST" Type="Double" />
+    <Property Name="D_KODA" Type="Int32" />
+    <NavigationProperty Name="DOBAVITELJ" Relationship="Self.FK_PRODUKT_ToTable" FromRole="PRODUKT" ToRole="DOBAVITELJ" />
+    <NavigationProperty Name="VRSTICA" Relationship="Self.FK_VRSTICA_ToTable_1" FromRole="PRODUKT" ToRole="VRSTICA" />
+  </EntityType>
+  <EntityType Name="RAČUN">
+    <Key>
+      <PropertyRef Name="RAČ_ID" />
+    </Key>
+    <Property Name="RAČ_ID" Type="Int32" Nullable="false" />
+    <Property Name="KUP_KODA" Type="Int32" />
+    <Property Name="RAČ_DATUM" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="KUPEC" Relationship="Self.FK_RAČUN_ToTable" FromRole="RAČUN" ToRole="KUPEC" />
+    <NavigationProperty Name="VRSTICA" Relationship="Self.FK_VRSTICA_ToTable" FromRole="RAČUN" ToRole="VRSTICA" />
+  </EntityType>
+  <EntityType Name="VRSTICA">
+    <Key>
+      <PropertyRef Name="RAČ_ID" />
+      <PropertyRef Name="VRS_ŠT" />
+    </Key>
+    <Property Name="RAČ_ID" Type="Int32" Nullable="false" />
+    <Property Name="VRS_ŠT" Type="Int16" Nullable="false" />
+    <Property Name="P_KODA" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="VRS_KOS" Type="Double" />
+    <Property Name="VRS_CENA" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="PRODUKT" Relationship="Self.FK_VRSTICA_ToTable_1" FromRole="VRSTICA" ToRole="PRODUKT" />
+    <NavigationProperty Name="RAČUN" Relationship="Self.FK_VRSTICA_ToTable" FromRole="VRSTICA" ToRole="RAČUN" />
+  </EntityType>
+  <Association Name="FK_PRODUKT_ToTable">
+    <End Role="DOBAVITELJ" Type="Self.DOBAVITELJ" Multiplicity="0..1" />
+    <End Role="PRODUKT" Type="Self.PRODUKT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOBAVITELJ">
+        <PropertyRef Name="D_KODA" />
+      </Principal>
+      <Dependent Role="PRODUKT">
+        <PropertyRef Name="D_KODA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAČUN_ToTable">
+    <End Role="KUPEC" Type="Self.KUPEC" Multiplicity="0..1" />
+    <End Role="RAČUN" Type="Self.RAČUN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KUPEC">
+        <PropertyRef Name="KUP_KODA" />
+      </Principal>
+      <Dependent Role="RAČUN">
+        <PropertyRef Name="KUP_KODA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VRSTICA_ToTable_1">
+    <End Role="PRODUKT" Type="Self.PRODUKT" Multiplicity="0..1" />
+    <End Role="VRSTICA" Type="Self.VRSTICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUKT">
+        <PropertyRef Name="P_KODA" />
+      </Principal>
+      <Dependent Role="VRSTICA">
+        <PropertyRef Name="P_KODA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VRSTICA_ToTable">
+    <End Role="RAČUN" Type="Self.RAČUN" Multiplicity="1" />
+    <End Role="VRSTICA" Type="Self.VRSTICA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RAČUN">
+        <PropertyRef Name="RAČ_ID" />
+      </Principal>
+      <Dependent Role="VRSTICA">
+        <PropertyRef Name="RAČ_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BazaZaVajeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DOBAVITELJ" EntityType="Self.DOBAVITELJ" />
+    <EntitySet Name="KUPEC" EntityType="Self.KUPEC" />
+    <EntitySet Name="PRODUKT" EntityType="Self.PRODUKT" />
+    <EntitySet Name="RAČUN" EntityType="Self.RAČUN" />
+    <EntitySet Name="VRSTICA" EntityType="Self.VRSTICA" />
+    <AssociationSet Name="FK_PRODUKT_ToTable" Association="Self.FK_PRODUKT_ToTable">
+      <End Role="DOBAVITELJ" EntitySet="DOBAVITELJ" />
+      <End Role="PRODUKT" EntitySet="PRODUKT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAČUN_ToTable" Association="Self.FK_RAČUN_ToTable">
+      <End Role="KUPEC" EntitySet="KUPEC" />
+      <End Role="RAČUN" EntitySet="RAČUN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VRSTICA_ToTable_1" Association="Self.FK_VRSTICA_ToTable_1">
+      <End Role="PRODUKT" EntitySet="PRODUKT" />
+      <End Role="VRSTICA" EntitySet="VRSTICA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VRSTICA_ToTable" Association="Self.FK_VRSTICA_ToTable">
+      <End Role="RAČUN" EntitySet="RAČUN" />
+      <End Role="VRSTICA" EntitySet="VRSTICA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

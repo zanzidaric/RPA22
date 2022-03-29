@@ -1,0 +1,14 @@
+D:\RPA22\App1\App1\bin\Debug\BazaZaVaje.mdf
+D:\RPA22\App1\App1\bin\Debug\BazaZaVaje_log.ldf
+D:\RPA22\App1\App1\bin\Debug\EntityFramework.dll
+D:\RPA22\App1\App1\bin\Debug\EntityFramework.SqlServer.dll
+D:\RPA22\App1\App1\bin\Debug\EntityFramework.xml
+D:\RPA22\App1\App1\bin\Debug\EntityFramework.SqlServer.xml
+D:\RPA22\App1\App1\obj\Debug\App1.csproj.AssemblyReference.cache
+D:\RPA22\App1\App1\obj\Debug\App1.csproj.CoreCompileInputs.cache
+D:\RPA22\App1\App1\obj\Debug\App1.csproj.CopyComplete
+D:\RPA22\App1\App1\obj\Debug\App1.exe
+D:\RPA22\App1\App1\obj\Debug\App1.pdb
+D:\RPA22\App1\App1\bin\Debug\App1.exe.config
+D:\RPA22\App1\App1\bin\Debug\App1.exe
+D:\RPA22\App1\App1\bin\Debug\App1.pdb
