@@ -1,0 +1,28 @@
+﻿<Window x:Class="Povezovanje.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Povezovanje"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="podatkiViewSource"/>
+    </Window.Resources>
+    <Grid>
+        <ListView Name="lstPodatki"
+                  ItemsSource="{Binding Source={StaticResource podatkiViewSource}}">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="10" Orientation="Horizontal">
+                        <TextBlock Text="{Binding Id}" Margin="5"/>
+                        <TextBlock Text="{Binding Datum}" Margin="5"/>
+                        <TextBlock Text="{Binding Ime}" Margin="5"/>
+                        <TextBlock Text="{Binding Znesek}" Margin="5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
