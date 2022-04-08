@@ -1,0 +1,37 @@
+﻿@model DrugaMVC.Models.Student
+@{
+    ViewBag.Title = "TestRazorja";
+}
+<h1>Test razor sintakse</h1>
+<h2>@DateTime.Now.ToLongDateString()</h2> @*inline c#*@
+@*@{ 
+    string date = DateTime.Now.ToShortDateString();
+    var sporocilo = "Tudi danes pozdravljen";
+}
+<h2>Danes je @date</h2>
+<h3>@sporocilo</h3>*@
+
+@{ 
+    string date = DateTime.Now.ToShortDateString();
+    var sporocilo = "Tudi danes pozdravljen";
+    @:Danes je @date <br/>
+    <text>Danes je </text> @date <br/>
+    @sporocilo <br />
+}
+@if(DateTime.IsLeapYear(DateTime.Now.Year))
+{
+    @DateTime.Now.Year <text> je prestopno leto</text>
+}
+else
+{
+    @DateTime.Now.Year <text> ni prestopno leto</text>
+}
+@for(int k = 0; k < 5; k++)
+            {
+                @k.ToString() <br />
+            }
+<ul>
+    <li>student ID: @Model.StudentId</li>
+    <li>Ime: @Model.StudentName</li>
+    <li>Starost: @Model.Age</li>
+</ul>
