@@ -1,0 +1,50 @@
+﻿@model VajaMVC.Models.Izpit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Izpit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.predmet.PredmetIme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.predmet.PredmetIme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.StudentIme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentIme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ocena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ocena)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
