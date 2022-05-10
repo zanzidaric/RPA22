@@ -140,8 +140,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EkipaController.cs" />
+    <Compile Include="Controllers\EkipeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IgralecaController.cs" />
     <Compile Include="Controllers\IgralecController.cs" />
+    <Compile Include="Controllers\TurniraController.cs" />
     <Compile Include="Controllers\TurnirController.cs" />
     <Compile Include="Data\SeminarskaContext.cs" />
     <Compile Include="Global.asax.cs">
